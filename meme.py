@@ -9,10 +9,9 @@ async def on_ready():
     print(f'Bot {bot.user.name} ha iniciado sesión.')
 @bot.command()
 async def mem(ctx):
-    memes = os.listdir('images')
-    selected_meme = random.choice(memes)
-    with open(f'images/{selected_meme}', 'rb') as f:
+    meme_files = os.listdir('images')
+    img_name = random.choice(meme_files)
+    with open(f'images/{img_name}', 'rb') as f:
         picture = discord.File(f)
     await ctx.send(file=picture)
-
 bot.run('token')
